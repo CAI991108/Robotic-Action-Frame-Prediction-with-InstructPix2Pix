@@ -1,0 +1,64 @@
+{
+    "latex-workshop.latex.tools": [
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-shell-escape",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-output-directory=./tmp",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "tmp/%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "pdflatex -> bibtex -> pdflatex*2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        }
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.outDir": "./tmp",
+    "latex-workshop.synctex.afterBuild.enabled": true,
+    "cSpell.words": [
+        "thebibliography"
+    ],
+    "latex-workshop.latex.clean.enabled": true,
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ilg",
+        "*.ind",
+        "*.log",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.lof",
+        "*.lot",
+        "*.nav",
+        "*.snm",
+        "*.synctex.gz"
+    ]
+}

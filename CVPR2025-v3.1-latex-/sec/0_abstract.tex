@@ -1,0 +1,17 @@
+\begin{abstract}
+Predicting future visual states of robotic actions is critical 
+    for ensuring safe and efficient task execution in dynamic environments. 
+Existing methods often face challenges in modeling long-term temporal dependencies 
+    and effectively fusing multimodal inputs. 
+In this work, we propose a novel framework for robotic action frame prediction, 
+    which generates future frames conditioned on a current image and an action command. 
+Our approach adapts the \texttt{InstructPix2Pix}~\cite{brooks2023instructpix2pixlearningfollowimage} architecture through multimodal fine-tuning, 
+    enabling joint reasoning over visual scenes and language semantics. 
+We validate the framework on a synthetic dataset generated via \texttt{RoboTwin}~\cite{mu2025robotwindualarmrobotbenchmark}, 
+    comprising 300 samples across three tasks. 
+Despite limited training data, our method achieves strong performance
+    with an average \texttt{SSIM=0.978} and \texttt{PSNR=42.88dB}, 
+        outperforming baseline models in pixel-level accuracy and structural consistency. 
+This research work bridges the tasks of instruction-driven image editing with robotic action anticipation,
+    offering a scalable solution for applications requiring interpretable and safety-critical predictions.
+\end{abstract}

@@ -1,0 +1,17 @@
+lightning:
+  callbacks:
+    image_logger:
+      target: main.ImageLogger
+      params:
+        batch_frequency: 2000
+        max_images: 2
+        increase_log_steps: false
+  trainer:
+    max_epochs: 100
+    benchmark: true
+    accumulate_grad_batches: 8
+    check_val_every_n_epoch: 4
+    accelerator: ddp
+    gpus: 0,1
+    resume_from_checkpoint: logs/train_default/checkpoints/last.ckpt
+    precision: 32

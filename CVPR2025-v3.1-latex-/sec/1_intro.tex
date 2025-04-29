@@ -1,0 +1,66 @@
+\section{Introduction}
+\label{sec:intro}
+
+Robotic actions prediction is challenged in autonomous systems, 
+  as accurate anticipation of future states ensures both operational safety and efficiency 
+  \cite{Wang2025LevelGround,TimeSeriesPredictiveControlRobotics2024}.
+Robots operating in dynamic environments must interpret multimodal inputs, 
+  such as visual observations and textual instructions, 
+    to plan and execute tasks reliably. 
+For instance, when instructed to "beat the block with the hammer," 
+  a robot must not only perceive the current spatial arrangement of objects 
+    but also infer the physical consequences of its actions over time. 
+Despite recent advancements, 
+  existing methods often struggle with two key limitations: 
+  (1) \textit{temporal complexity} in modeling long-horizon dynamics 
+  (e.g., predicting outcomes 50 frames ahead)
+  \cite{TimeSeriesPredictiveControlRobotics2024}, and 
+  (2) \textit{ineffective fusion} of multimodal inputs, 
+    where visual and textual modalities are processed in isolation 
+      rather than synergistically~\cite{liu2025bidirectional,xia2025phoenixmotionbasedselfreflectionframework}.
+
+In this work, we address threshold task of \textbf{robotic action frame prediction}, 
+  which requires generating a future visual frame (256$\times$256 resolution) 
+    conditioned on a current observation and a textual action instruction 
+    (e.g., "handover the blocks"). 
+Unlike the traditional video prediction frameworks 
+  that focus on sequential modeling~\cite{TimeSeriesPredictiveControlRobotics2024}, 
+    our task emphasizes the translation of high-level instructions 
+      into pixel-level visual outcomes, 
+        demanding tight alignment between language semantics and spatial reasoning.
+This problem is further complicated by the need to generalize across diverse environments, 
+  a challenge highlighted in recent studies on cross-robot control frameworks 
+    like \texttt{UniAct}~\cite{zheng2025universalactionsenhancedembodied}
+    and motion-based self-correction systems like \texttt{Phoenix}~\cite{xia2025phoenixmotionbasedselfreflectionframework}.
+This research contributions are threefold:
+\begin{enumerate}
+  \item \textbf{Multimodal Fine-Tuning Framework}: 
+  Building on the success with existing instruction-driven image editing models
+    \cite{liu2025bidirectional,xia2025phoenixmotionbasedselfreflectionframework},
+    we propose a novel adaptation of the \texttt{InstructPix2Pix}~\cite{brooks2023instructpix2pixlearningfollowimage} architecture, 
+    integrating visual and textual inputs to generate future frames. 
+  By fine-tuning the pretrained model, 
+    we enable precise alignment between action instructions 
+    (e.g., "stack blocks") and their visual consequences.
+  \item \textbf{Efficacy on Limited Data}: 
+  We synthetically validate our experiment approach with generated \texttt{RoboTwin}~\cite{mu2025robotwindualarmrobotbenchmark} dataset, 
+    comprising the 300 annotated training samples across three tasks 
+    (\textit{block\_hammer\_beat, block\_handover, blocks\_stack\_easy}). 
+  Despite the small scale, our method achieves robust generalization 
+    by leveraging pretrained priors and targeted augmentation strategies,
+    mirroring the success of recent datasets \texttt{Fourier ActionNet}
+      enabling high-performance with limited samples~\cite{fourier2025actionnet}.
+  \item \textbf{Open-Source Implementation}: 
+  We release fully reproducible code and configurations, 
+    with modular pipelines to facilitate community adoption and further research.
+\end{enumerate}
+
+\noindent
+This work bridges the gap between instruction-driven image editing and robotic action anticipation, 
+  offering a scalable solution for real-world applications 
+    where safety and interpretability are paramount.
+By addressing both temporal modeling and multimodal fusion challenges, 
+  our approach complements emerging paradigms in robotic control, 
+    such as universal action spaces~\cite{zheng2025universalactionsenhancedembodied} 
+    and adaptive exoskeleton systems~\cite{Wang2025LevelGround}, 
+      advancing the frontier reproducible AI research.

@@ -1,0 +1,99 @@
+% CVPR 2025 Paper Template; see https://github.com/cvpr-org/author-kit
+
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+\newcommand{\codeblock}[1]{%
+    \colorbox{gray!10}{\texttt{#1}}%
+}
+
+\usepackage{booktabs}
+\usepackage{multirow}
+%%%%%%%%% PAPER TYPE  - PLEASE UPDATE FOR FINAL VERSION
+\usepackage{cvpr}              % To produce the CAMERA-READY version
+% \usepackage[review]{cvpr}      % To produce the REVIEW version
+% \usepackage[pagenumbers]{cvpr} % To force page numbers, e.g. for an arXiv version
+
+% Import additional packages in the preamble file, before hyperref
+\input{preamble}
+
+% It is strongly recommended to use hyperref, especially for the review version.
+% hyperref with option pagebackref eases the reviewers' job.
+% Please disable hyperref *only* if you encounter grave issues, 
+% e.g. with the file validation for the camera-ready version.
+%
+% If you comment hyperref and then uncomment it, you should delete *.aux before re-running LaTeX.
+% (Or just hit 'q' on the first LaTeX run, let it finish, and you should be clear).
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\usepackage[pagebackref,breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
+
+%%%%%%%%% PAPER ID  - PLEASE UPDATE
+\def\paperID{*****} % *** Enter the Paper ID here
+\def\confName{CVPR}
+\def\confYear{2025}
+
+%%%%%%%%% TITLE - PLEASE UPDATE
+\title{AI Model for Robotic Action Frame Prediction}
+
+%%%%%%%%% AUTHORS - PLEASE UPDATE
+\author{Zijin CAI\\
+School of Data Science, CUHK(SZ)\\
+{\tt\small 224040002@link.cuhk.edu.cn}
+\and 
+Guyuan XU\\
+School of Data Science, CUHK(SZ)\\
+{\tt\small 224040074@link.cuhk.edu.cn}
+\and
+Xiaomeng LI\\
+School of Data Science, CUHK(SZ)\\
+{\tt\small 224040028@link.cuhk.edu.cn}
+% For a paper whose authors are all at the same institution,
+% omit the following lines up until the closing ``}''.
+% Additional authors and addresses can be added with ``\and'',
+% just like the second author.
+% To save space, use either the email address or home page, not both
+}
+\begin{document}
+\maketitle
+\input{sec/0_abstract}    
+\input{sec/1_intro}
+\input{sec/2_reseach_method}
+\input{sec/3_exp_results}
+\section{Conclusion and Future Work}
+
+This research validates the feasibility of multimodal fine-tuning for robotic action frame prediction, 
+    demonstrating that instruction-conditioned image generation models 
+can effectively anticipate future visual states in dynamic environments,
+    by adapting the \texttt{InstructPix2Pix} architecture to jointly process current RGB frames and textual instructions. 
+These results underscore the potential of leveraging pretrained diffusion models 
+    for safety-critical robotic applications requiring interpretable predictions.
+
+\paragraph{Limitations and Future Directions:}
+\begin{enumerate}
+    \item \textbf{Limited Small-Scale Data}: 
+    While our method performs robustly on target tasks, 
+        its generalization to unseen scenarios is constrained by the synthetic dataset size. 
+    Future work should expand dataset to include diverse environments and actions, 
+        potentially leveraging large-scale simulation platforms or real-world robotic deployments.
+    \item \textbf{Temporal Modeling Gap}: 
+    The current framework processes frames independently, neglecting temporal dependencies between consecutive states. 
+    Integrating sequential models (e.g., \textit{LSTMs} or \textit{Transformer-based} architectures) 
+        to capture inter-frame dynamics could enhance long-horizon prediction accuracy.
+    \item \textbf{Real-World Deployment}: 
+    While tested in simulation, translating the approach to physical robots requires addressing domain gaps 
+        (e.g., lighting variations, sensor noise) through techniques like domain randomization 
+            or \textit{sim-to-real transfer learning} for real-world robustness.
+\end{enumerate}
+\noindent
+\textbf{Workloads Distribution} please see footnote\footnote{
+    Zijin Cai: experiment desgin and conduction with InstructPix2Pix; \\
+    Guyuan Xu: data collection and preprocessing using RoboTwin; \\
+    Xiaomeng Li: results evaluation and analysis, report writing.}.
+
+
+\bibliographystyle{ieeenat_fullname}
+\bibliography{main}
+
+
+\input{sec/X_suppl}
+
+\end{document}
